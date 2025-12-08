@@ -1,0 +1,96 @@
+//FIXED SIZE ARRAY
+
+
+
+module tb;
+  
+  initial begin
+//SINGLE DIMENSIONAL ARRAY
+  int fixarr [3]='{1,2,3};
+
+//MULTI DIMENSIONAL ARRAY
+  int multiarr [3][2] ='{'{1,2},'{1,2},'{3,2}};
+  
+  
+//PACKED AND UNPACKED ARRAY
+  
+  /* packed- vectors- same signal partioned to groups
+  unpacked - with rows and columns*/
+  
+    bit [2:0] packedarr= 3'b101;
+  int unpackedarr[2][3] ='{'{1,2,3},'{4,5,6}};
+    bit [2][3] mixedarr [1][2]= '{'{6'hbc,6'hcd}};
+  
+  
+    foreach(fixarr[i])begin
+      $display("%h",fixarr[i]);
+    end
+    
+    foreach(multiarr[i])begin
+      $display("%p",multiarr[i]);
+      foreach(multiarr[i][j])begin
+        $display("%p",multiarr[i][j]);
+      end
+    end
+    
+    foreach(packedarr[i])begin
+      $display("%b",packedarr[i]);
+    end
+    
+    foreach(unpackedarr[i]) begin
+      $display("%p",unpackedarr[i]);
+      foreach(unpackedarr[i][j])begin
+        $display("%p",unpackedarr[i][j]);
+      end
+    end
+    
+    foreach(mixedarr[i,j,k,l])
+      
+      $display("%d %d %d %d %d",i,j,k,l,mixedarr[i][j][k][l]);
+  end
+                  endmodule
+
+
+
+
+
+
+
+
+/*
+00000001
+00000002
+00000003
+'{1, 2} 
+          1
+          2
+'{1, 2} 
+          1
+          2
+'{3, 2} 
+          3
+          2
+1
+0
+1
+'{1, 2, 3} 
+          1
+          2
+          3
+'{4, 5, 6} 
+          4
+          5
+          6
+          
+          0           0           0           0 1
+          0           0           0           1 1
+          0           0           0           2 1
+          0           0           1           0 1
+          0           0           1           1 0
+          0           0           1           2 0
+          0           1           0           0 0
+          0           1           0           1 0
+          0           1           0           2 1
+          0           1           1           0 1
+          0           1           1           1 0
+          0           1           1           2 1*/
