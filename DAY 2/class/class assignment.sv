@@ -1,3 +1,4 @@
+//class assignment
 
 /*class name;
   int a;
