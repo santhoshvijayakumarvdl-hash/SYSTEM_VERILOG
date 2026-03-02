@@ -1,4 +1,4 @@
-
+//class definition
 class name;
   int a;
   bit b;
